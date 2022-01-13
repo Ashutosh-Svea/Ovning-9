@@ -21,21 +21,25 @@ function addToList () {
 }
 
 //very twisted approach. read more and change logic!!!!!
+//using table class as way to find which is selected row by click event
 function onItemClick (e) {
     row = e.target.parentNode;  
 
-    if (row.className === "table-warning")
-        row.className = "";
+    if (row.className.includes("table-warning"))
+        row.className = row.className.replace("table-warning", "");
     else
     {
         resetOtherRows();
-        row.className = "table-warning";
+        row.className = row.className.concat(" table-warning");
     }   
 
     
-//    console.log(row);
+//    console.log(row.className);
 //    removeButton.disabled = false;
 }
+
+//investigate later why this is needed. 
+//since only one row is able to be deleted so reset other than the clicked row
 
 function resetOtherRows() {
     let items = document.getElementsByClassName("table-warning");
@@ -46,11 +50,44 @@ function resetOtherRows() {
     {
         for (let i = 0; i < items.length; i++) {
             console.log(items.item(i));
-            items.item(i).className = "";
+            items.item(i).className = items.item(i).className.replace("table-warning", "");
         }
     }
 
 }
+
+function markDone() {
+
+    let items = document.getElementsByClassName("table-warning");
+//    console.log(items.length);
+    if (items.length === 0)
+    {
+        alert ("Select atleast one item in the list");
+    }
+    else
+    {
+        for (let i = 0; i < items.length; i++) {
+            //console.log(items.item(i));
+            let id = items.item(i).id;
+
+            strikeThrough(id);
+        }
+    }
+}
+
+function strikeThrough (id) {
+
+    console.log(id);
+    let item = document.getElementById(id);
+    if (item.className.includes("text-decoration-line-through"))
+        alert ("Item already completed/bought");
+    else
+        item.className = item.className.concat (" text-decoration-line-through");
+
+//    item.className = item.className.replace ("text-decoration-line-through", "");
+
+}
+
 function removeFromList() {
 
     let items = document.getElementsByClassName("table-warning");
@@ -62,7 +99,7 @@ function removeFromList() {
     else
     {
         for (let i = 0; i < items.length; i++) {
-            console.log(items.item(i));
+            //console.log(items.item(i));
             let id = items.item(i).id;
             removeItem(id);
         }
@@ -70,7 +107,7 @@ function removeFromList() {
 }
 
 function removeItem(id) {
-    console.log(id);
+    //console.log(id);
     document.getElementById(id).remove();
 
 }
