@@ -7,6 +7,11 @@ function addToList () {
      let item = document.getElementById("itemId").value;
      let listTable = document.getElementById("shoppingListTableId");
 
+     if (item == "")
+     {
+         alert ("No item added in the textbox");
+         return;
+     }
      let row = listTable.insertRow(0);
      let id = itemNumber++;
 
@@ -73,6 +78,38 @@ function markDone() {
             strikeThrough(id);
         }
     }
+}
+
+function markUnDone() {
+
+    let items = document.getElementsByClassName("table-warning");
+//    console.log(items.length);
+    if (items.length === 0)
+    {
+        alert ("Select atleast one item in the list");
+    }
+    else
+    {
+        for (let i = 0; i < items.length; i++) {
+            //console.log(items.item(i));
+            let id = items.item(i).id;
+
+            unstrikeThrough(id);
+        }
+    }
+}
+
+function unstrikeThrough (id) {
+
+    console.log(id);
+    let item = document.getElementById(id);
+    if (item.className.includes("text-decoration-line-through"))
+        item.className = item.className.replace("text-decoration-line-through", "")
+    else
+        alert ("First mark the item completed/bought");
+
+//    item.className = item.className.replace ("text-decoration-line-through", "");
+
 }
 
 function strikeThrough (id) {
