@@ -29,19 +29,9 @@
             <button id="addButton" type="button" onclick="addToList();" class="btn btn-primary m-3">
                 Add
             </button>
-            <button id="removeButton" type="button" onclick="removeFromList();" class="btn btn-primary m-3">
-                Delete
-            </button>
-            <button id="doneButton" type="button" onclick="markDone();" class="btn btn-primary m-3 ">
-                Completed/Bought    
-            </button>
-            </button>
-            <button id="undoneButton" type="button" onclick="markUnDone();" class="btn btn-primary m-3 ">
-                Undo Completed/Bought    
-            </button>
 
         </div>
-
+        <div class="col-6">
         <div class=" table-responsive col m-3 ">
             <table  class="table table caption-top table-bordered table-hover table-primary ">
                 <caption> Shopping List </caption>
@@ -53,6 +43,18 @@
                 <tbody id="shoppingListTableId">
                 </tbody>
             </table>
+        </div>
+        <div class="col-12"> 
+        <button id="removeButton" type="button" onclick="removeFromList();" class="btn btn-primary m-3">
+                Delete
+            </button>
+            <button id="doneButton" type="button" onclick="markDone();" class="btn btn-primary m-3 ">
+                Completed/Bought    
+            </button>
+            </button>
+            <button id="undoneButton" type="button" onclick="markUnDone();" class="btn btn-primary m-3 ">
+                Undo Completed/Bought    
+            </button>
         </div>
     </div>
 
