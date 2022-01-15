@@ -104,7 +104,10 @@ function unstrikeThrough (id) {
     console.log(id);
     let item = document.getElementById(id);
     if (item.className.includes("text-decoration-line-through"))
-        item.className = item.className.replace("text-decoration-line-through", "")
+    {
+        item.className = item.className.replace("text-decoration-line-through", "").replace("table-secondary", "");
+
+    }
     else
         alert ("First mark the item completed/bought");
 
@@ -119,7 +122,11 @@ function strikeThrough (id) {
     if (item.className.includes("text-decoration-line-through"))
         alert ("Item already completed/bought");
     else
-        item.className = item.className.concat (" text-decoration-line-through");
+    {
+        item.className = item.className.concat (" text-decoration-line-through").concat(" table-secondary");
+        row.className = row.className.concat();
+
+    }
 
 //    item.className = item.className.replace ("text-decoration-line-through", "");
 
